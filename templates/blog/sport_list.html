@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
 <!doctype html>
 <html lang="ru">
 <head>
@@ -8,25 +15,19 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Категории</h2>
+<h1>Sport</h1>
 {% for category in categories%}
-    <p><a href="{% url 'category' category.slug %}">{{ category.name }}</a></p>
+    <p><a href="{% url 'category' category.slug %}">{{ category.name }} - {{ category.slug }}</a></p>
 {% endfor %}
-
 <hr>
-    <h2>Новости</h2>
 {% for post in post_list %}
     <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
     <p>{{ post.mini_text }}</p>
     <small>{{ post.published_date }}</small>
     <p>Просмотров - {{ post.viewed }}</p> <br>
     <p>Комментариев - {{ post.get_comments_count }}</p>
-    <hr>
 {% endfor %}
-
-<h2>Поиск по тегам</h2>
-{% for tag in tags %}
-<p><a href="{% url 'tag_list' tag.slug  %}">{{ tag.name }}</a></p>
-{% endfor%}
+</body>
+</html>
 </body>
 </html>
