@@ -26,7 +26,7 @@
 <hr>
 
 <h4>Комментарии</h4>
-{% for comment in comments %}
+{% for comment in post.comments.all %}
     Пользователь {{ comment.author }} <br>
     {{ comment.text }}
 Добавлен - {{ comment.created_date }}

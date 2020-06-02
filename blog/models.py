@@ -23,6 +23,9 @@ class Category(MPTTModel):
     paginated = models.PositiveIntegerField('Количество новостей на странице', default=5)
     sort = models.PositiveIntegerField('Порядок', default=0)
 
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'category_slug': self.slug})
+
     def __str__(self):
         return self.name
 
@@ -85,6 +88,9 @@ class Post(models.Model):
     viewed = models.PositiveIntegerField("Просмотрено", default=0)
     status = models.BooleanField("Для зарегистрированных", default=False)
     sort = models.PositiveIntegerField('Порядок', default=0)
+
+    def get_category_template(self):
+        return self.category.template
 
     def get_tags(self):
         return self.tags.all()
