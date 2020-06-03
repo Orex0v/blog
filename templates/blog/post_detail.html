@@ -28,6 +28,15 @@
 <hr>
 
 <h4>Комментарии</h4>
+{% if user.is_authenticated %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Отправить</button>
+    </form>
+{% else %}
+<p>Войдите что бы оставить комментарии</p>
+{% endif %}
 {% for comment in post.comments.all %}
     Пользователь {{ comment.author }} <br>
     {{ comment.text }}
