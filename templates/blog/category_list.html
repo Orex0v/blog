@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+{% for category in categories%}
+    <p><a href="{% url 'category' category.slug %}">{{ category.name }} - {{ category.slug }}</a></p>
+{% endfor %}
+<hr>
+{% for post in post_list %}
+    <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+    <p>{{ post.mini_text }}</p>
+    <small>{{ post.published_date }}</small>
+    <p>Просмотров - {{ post.viewed }}</p> <br>
+    <p>Комментариев - {{ post.get_comments_count }}</p>
+{% endfor %}
+</body>
+</html>
